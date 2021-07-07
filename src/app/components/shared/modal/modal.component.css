@@ -1,0 +1,22 @@
+.modal {
+    z-index: 110;
+}
+
+.modal-card {
+    animation: moveUp 600ms ease;
+}
+
+#add-person-icon {
+    color: #acacac;
+}
+
+@keyframes moveUp {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

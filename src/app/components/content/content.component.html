@@ -1,0 +1,35 @@
+<mat-sidenav-container class="mat-sidenav" hasBackdrop="true">
+
+    <mat-sidenav #drawer fixedInViewport="true" mode="over">
+        <div class="container px-3 py-3">
+
+            <div class="level is-mobile mb-2">
+                <div class="level-left">
+                    <h1 class="has-text-weight-semibold is-size-4">{{title}}</h1>
+                </div>
+                <div class="level-right">
+                    <app-nav-button icon="fas fa-times" (click)="drawer.toggle()"></app-nav-button>
+                </div>
+            </div>
+            <p class="is-size-7 has-text-grey-light">Welcome back <span class="has-text-weight-bold">Jose</span></p>
+
+            <hr>
+
+            <app-sidenav></app-sidenav>
+
+        </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <div class="main container py-5">
+
+            <app-nav-button id="sideNavBtn" icon="fas fa-bars" (click)="drawer.toggle()"></app-nav-button>
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
