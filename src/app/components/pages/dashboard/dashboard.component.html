@@ -41,6 +41,12 @@
 </div>
 
 
+<button (click)="toggleOpenClose()">Toggle Open/Close</button>
+
+<div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+    <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div>
+
 <!-- <button class="button is-link mt-6" (click)="toggleModal()">Modal</button>
 
 <div class="modal" [ngClass]="{'is-active': opened}">

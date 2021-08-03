@@ -5,8 +5,8 @@ import { CustomersComponent } from './components/pages/customers/customers.compo
 
 const routes: Routes = [
   {path: '', redirectTo:'/dashboard', pathMatch:'full'},
-  {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
-  {path: 'customers', component: CustomersComponent, pathMatch: 'full'}
+  {path: 'dashboard', component: DashboardComponent, pathMatch: 'full', data: {animation: 'DashboardPage'}},
+  {path: 'customers', component: CustomersComponent, pathMatch: 'full', data: {animation: 'CustomersPage'}},
 ];
 
 @NgModule({

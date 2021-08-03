@@ -16,12 +16,30 @@ const CUSTOMER_DATA: Customer[] = [
   {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
   {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
   {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
+  {name: 'Jose', email: 'jose@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Pedro', email: 'pedro@gmail.com', phone: '666 333 444', status: false},
+  {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
+  {name: 'Jose', email: 'jose@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Pedro', email: 'pedro@gmail.com', phone: '666 333 444', status: false},
+  {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
+  {name: 'Jose', email: 'jose@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Pedro', email: 'pedro@gmail.com', phone: '666 333 444', status: false},
+  {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
 ];
 
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.css']
+  styleUrls: ['./customers.component.css'],
+  animations: [
+
+  ]
 })
 export class CustomersComponent implements AfterViewInit {
 

@@ -3,8 +3,8 @@
         General
     </p>
     <ul class="menu-list">
-        <li><a routerLinkActive="is-active" [routerLink]="['/dashboard']">Dashboard</a></li>
-        <li><a routerLinkActive="is-active" [routerLink]="['/customers']">Customers</a></li>
+        <li><a routerLinkActive="is-active" [routerLink]="['/dashboard']" (click)="clickLink()">Dashboard</a></li>
+        <li><a routerLinkActive="is-active" [routerLink]="['/customers']" (click)="clickLink()">Customers</a></li>
     </ul>
     <p class="menu-label">
         Administration

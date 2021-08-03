@@ -15,7 +15,7 @@
 
             <hr>
 
-            <app-sidenav></app-sidenav>
+            <app-sidenav (clickedLink)="drawer.toggle()"></app-sidenav>
 
         </div>
 
@@ -26,7 +26,10 @@
         <div class="main container py-5">
 
             <app-nav-button id="sideNavBtn" icon="fas fa-bars" (click)="drawer.toggle()"></app-nav-button>
-            <router-outlet></router-outlet>
+
+            <div [@routeAnimations]="prepareRoute(outlet)">
+                <router-outlet #outlet></router-outlet>
+            </div>
 
         </div>
 
