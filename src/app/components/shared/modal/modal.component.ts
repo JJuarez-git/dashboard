@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Customer } from '../../pages/customers/customers.component';
 
@@ -7,7 +7,7 @@ import { Customer } from '../../pages/customers/customers.component';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent {
+export class ModalComponent{
 
   opened: boolean = false;
   @Input() modalTitle: string;

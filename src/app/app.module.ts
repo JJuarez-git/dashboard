@@ -16,6 +16,7 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 import { ModalComponent } from './components/shared/modal/modal.component';
 
 import { CheckStatusPipe } from './pipes/check-status.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CheckStatusPipe } from './pipes/check-status.pipe';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ChartModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

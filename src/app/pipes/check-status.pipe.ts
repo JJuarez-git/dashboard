@@ -9,7 +9,7 @@ export class CheckStatusPipe implements PipeTransform {
 
     let status: string;
 
-    return (value) ? status = 'Online' : status = 'Disconnected';;
+    return (value) ? status = 'Online' : status = 'Disconnected';
   }
 
 }

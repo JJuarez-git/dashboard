@@ -1,104 +1,120 @@
-<h3 class="title">Customers</h3>
+<h3 class="title has-text-centered">Customers</h3>
+<article class="message is-primary" [@openClose]="isOpen ? 'open' : 'closed'">
+    <div class="message-body">
+        Customer added correctly!
+    </div>
+</article>
 
 <div class="customer-bg px-0 pb-0 mat-elevation-z3">
 
-    <div class="columns mb-0">
-        <div class="column is-half flex is-align-items-center">
-            <p class="is-size-6 ml-5 pt-2">Total <span class="has-text-weight-semibold">{{dataLength}}</span></p>
-        </div>
-        <div class="column">
-            <div class="example-button-row">
-                <button mat-stroked-button class="ml-3" (click)="modal.toggleModal()">Add customer</button>
+    <ng-container *ngIf="dataLoaded(); else loading">
+
+        <div class="columns mb-0">
+            <div class="column is-half flex is-align-items-center">
+                <p class="is-size-6 ml-5 pt-2">Total <span class="has-text-weight-semibold">{{dataLength}}</span></p>
             </div>
-        </div>
-        <div class="column is-one-third">
-            <div class="control has-icons-left mx-3">
-                <input class="input is-primary" type="text" placeholder="Search name, email or phone number" (keyup)="applyFilter($event)">
-                <span class="icon is-small is-left">
+            <div class="column">
+                <div class="example-button-row">
+                    <button mat-stroked-button class="ml-3" (click)="modal.toggleModal()">Add customer</button>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="control has-icons-left mx-3">
+                    <input class="input is-primary" type="text" placeholder="Search name, email or phone number" (keyup)="applyFilter($event)">
+                    <span class="icon is-small is-left">
                 <i class="fas fa-search"></i>
             </span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="cus-table-wrapper mat-elevation-z2">
+        <div class="cus-table-wrapper mat-elevation-z2">
 
-        <table mat-table [dataSource]="dataSource" class="customer-table table is-fullwidth is-striped my-3" matSort>
+            <table mat-table [dataSource]="dataSource" class="customer-table table is-fullwidth is-striped my-3" matSort>
 
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                <td mat-cell *matCellDef="let customer; let odd = odd; let even = even">
-                    <div class="is-flex is-align-items-center">
-                        <img src="https://source.boringavatars.com/beam/40/{{customer.name}}?colors=00d1b2,09a6a3,9dbfaf,edebc9,fcf9d8" alt="icon" [ngClass]="{'icon-name-odd': odd, 'icon-name-even': even}">
-                        <p class="px-2">{{customer.name}}</p>
-                    </div>
-                </td>
-            </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                    <td mat-cell *matCellDef="let customer; let odd = odd; let even = even">
+                        <div class="is-flex is-align-items-center">
+                            <img src="https://source.boringavatars.com/beam/40/{{customer.name}}?colors=00d1b2,09a6a3,9dbfaf,edebc9,fcf9d8" alt="icon" [ngClass]="{'icon-name-odd': odd, 'icon-name-even': even}">
+                            <p class="px-2">{{customer.name}}</p>
+                        </div>
+                    </td>
+                </ng-container>
 
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-                <td mat-cell *matCellDef="let customer">{{customer.email}}</td>
-            </ng-container>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                    <td mat-cell *matCellDef="let customer">{{customer.email}}</td>
+                </ng-container>
 
-            <ng-container matColumnDef="phone">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
-                <td mat-cell *matCellDef="let customer">{{customer.phone}}</td>
-            </ng-container>
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+                    <td mat-cell *matCellDef="let customer">{{customer.phone}}</td>
+                </ng-container>
 
-            <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-                <td mat-cell *matCellDef="let customer; let odd = odd; let even = even">
-                    <div class="tag is-rounded" [ngClass]="{'is-tag-odd': odd, 'is-tag-even': even}">
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                    <td mat-cell *matCellDef="let customer; let odd = odd; let even = even">
+                        <div class="tag is-rounded" [ngClass]="{'is-tag-odd': odd, 'is-tag-even': even}">
 
-                        <ng-container *ngIf="customer.status; else disconnected">
-                            <svg width="10" height="10"><circle cx="5" cy="5" r="5"fill="#24d818" /></svg>
-                        </ng-container>
-                        <ng-template #disconnected>
-                            <svg width="10" height="10"><circle cx="5" cy="5" r="5"fill="#383838" /></svg>
-                            <!-- f52c2c -->
-                        </ng-template>
+                            <ng-container *ngIf="customer.status; else disconnected">
+                                <svg width="10" height="10"><circle cx="5" cy="5" r="5"fill="#24d818" /></svg>
+                            </ng-container>
+                            <ng-template #disconnected>
+                                <svg width="10" height="10"><circle cx="5" cy="5" r="5"fill="#383838" /></svg>
+                            </ng-template>
 
-                        <p class="px-2">{{customer.status | checkStatus}}</p>
-                    </div>
-                </td>
-            </ng-container>
+                            <p class="px-2">{{customer.status | checkStatus}}</p>
+                        </div>
+                    </td>
+                </ng-container>
 
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-                <td mat-cell *matCellDef="let customer; let index = index">
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                    <td mat-cell *matCellDef="let customer; let index = index">
 
-                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     <mat-icon>more_horiz</mat-icon>
                 </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                        <mat-icon>call</mat-icon>
-                        <span>Call {{customer.name}}</span>
-                    </button>
-                        <button mat-menu-item>
-                        <mat-icon>mail</mat-icon>
-                        <span>Mail {{customer.name}}</span>
-                    </button>
-                        <button mat-menu-item>
-                        <mat-icon>edit</mat-icon>
-                        <span>Edit contact</span>
-                    </button>
-                    </mat-menu>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                            <mat-icon>call</mat-icon>
+                            <span>Call {{customer.name}}</span>
+                        </button>
+                            <button mat-menu-item>
+                            <mat-icon>mail</mat-icon>
+                            <span>Mail {{customer.name}}</span>
+                        </button>
+                            <button mat-menu-item>
+                            <mat-icon>edit</mat-icon>
+                            <span>Edit contact</span>
+                        </button>
+                        </mat-menu>
 
-                </td>
-            </ng-container>
+                    </td>
+                </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [class.is-selected]="clickedRows.includes(row)"></tr>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [class.is-selected]="clickedRows.includes(row)"></tr>
 
-            <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell has-text-centered has-text-weight-medium" colspan="5">No data found</td>
-            </tr>
-        </table>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell has-text-centered has-text-weight-medium" colspan="5">No data found</td>
+                </tr>
 
-        <mat-paginator [pageSizeOptions]="[20, 30, 40]" showFirstLastButtons></mat-paginator>
-    </div>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[20, 30, 40]" showFirstLastButtons></mat-paginator>
+
+        </div>
+
+    </ng-container>
+
+    <ng-template #loading>
+        <div class="has-text-centered">
+            <img src="assets/svg/loading.svg" alt="loading">
+        </div>
+    </ng-template>
 
 </div>
 
-<app-modal #modal modalTitle="Add Customer" (submitCustomer)="addCustomer($event)"></app-modal>
+<app-modal #modal modalTitle="Add customer" (submitCustomer)="addCustomer($event)"></app-modal>

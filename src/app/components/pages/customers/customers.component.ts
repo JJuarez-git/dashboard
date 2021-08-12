@@ -2,33 +2,19 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { openClose } from 'src/app/animations/animation';
 
 export interface Customer {
   name: string,
   email?: string,
   phone?: string,
-  status: boolean
+  status?: boolean
 }
 
 const CUSTOMER_DATA: Customer[] = [
   {name: 'Jose', email: 'jose@gmail.com', phone: '666 333 444', status: true},
   {name: 'Pedro', email: 'pedro@gmail.com', phone: '666 333 444', status: false},
-  {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
-  {name: 'Jose', email: 'jose@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Pedro', email: 'pedro@gmail.com', phone: '666 333 444', status: false},
-  {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
-  {name: 'Jose', email: 'jose@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Pedro', email: 'pedro@gmail.com', phone: '666 333 444', status: false},
-  {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
-  {name: 'Jose', email: 'jose@gmail.com', phone: '666 333 444', status: true},
-  {name: 'Pedro', email: 'pedro@gmail.com', phone: '666 333 444', status: false},
-  {name: 'Juanito', email: 'juanito@gmail.com', phone: '666 333 444', status: true},
+  {name: 'Miguel', email: 'miguel@gmail.com', phone: '666 333 444', status: true},
   {name: 'Maria', email: 'maria@gmail.com', phone: '666 333 444', status: true},
   {name: 'Carlota', email: 'carlota@gmail.com', phone: '666 333 444', status: false},
 ];
@@ -37,9 +23,7 @@ const CUSTOMER_DATA: Customer[] = [
   selector: 'app-customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.css'],
-  animations: [
-
-  ]
+  animations: [openClose]
 })
 export class CustomersComponent implements AfterViewInit {
 
@@ -51,6 +35,12 @@ export class CustomersComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   clickedRows = new Array<Customer>();
+
+  isOpen = false;
+  
+  toggleOpenClose() {
+    this.isOpen = !this.isOpen;
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -77,6 +67,8 @@ export class CustomersComponent implements AfterViewInit {
     CUSTOMER_DATA.push(customer);
     this.dataSource.data = CUSTOMER_DATA;
     this.dataLength = CUSTOMER_DATA.length;
+    this.toggleOpenClose();
+    setTimeout(() => this.toggleOpenClose(), 3000);
   }
 
   deleteCustomer(index: number) {
@@ -84,5 +76,9 @@ export class CustomersComponent implements AfterViewInit {
     //this.dataSource.data = CUSTOMER_DATA;
     console.log(this.dataSource.data);
     console.log(CUSTOMER_DATA);
+  }
+
+  dataLoaded(): boolean {
+    return (CUSTOMER_DATA.length > 0) ? true : false;
   }
 }

@@ -55,15 +55,12 @@ export const slideInAnimation =
 export const openClose = 
 trigger('openClose', [
   state('open' ,style({
-    height: '200px',
     opacity: 1,
-    backgroundColor: 'yellow'
   })),
   state('closed', style({
-    height: '100px',
-    opacity: 0.8,
-    backgroundColor: '#c6ecff'
+    height: '0px',
+    opacity: 0,
   })),
-  transition('open => closed', animate(1000)),
-  transition('closed => open', animate(700))
+  transition('open => closed', animate(500)),
+  transition('closed => open', animate(500))
 ]); 
