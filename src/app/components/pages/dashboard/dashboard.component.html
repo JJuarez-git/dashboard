@@ -1,12 +1,36 @@
 <div class="container is-fluid mt-3">
 
     <div class="tile is-ancestor">
+
         <div class="tile is-vertical">
             <div class="tile">
 
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <!-- <line-chart></line-chart> -->
+                        <p>1</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box is-flex is-justify-content-center">
+                        <circular-progress></circular-progress>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <div class="block">
+                            <p>{{location.village}} {{location.state}}</p>
+                        </div>
+                        <div class="block">
+                            <p>{{location.weather}}º {{location.w_desc | titlecase}}</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="tile">
+
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <p>Tienes 4 notificaciones sin ver </p>
                     </article>
                 </div>
                 <div class="tile is-parent">
@@ -14,22 +38,8 @@
                         <bar-chart></bar-chart>
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <div class="block">
-                            <p>{{location.village}}, {{location.state}}</p>
-                        </div>
-                        <div class="block">
-                            <p>{{location.weather}}º {{location.w_desc}}</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p>4</p>
-                </article>
             </div>
         </div>
+
     </div>
 </div>

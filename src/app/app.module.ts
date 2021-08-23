@@ -14,6 +14,7 @@ import { NavButtonComponent } from './components/shared/nav-button/nav-button.co
 import { CustomersComponent } from './components/pages/customers/customers.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { ModalComponent } from './components/shared/modal/modal.component';
+import { CircularComponent } from './charts/circular/circular.component';
 
 import { CheckStatusPipe } from './pipes/check-status.pipe';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     CustomersComponent,
     DashboardComponent,
     CheckStatusPipe,
-    ModalComponent
+    ModalComponent,
+    CircularComponent
   ],
   imports: [
     BrowserModule,
