@@ -7,22 +7,43 @@
 
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <p>1</p>
-                    </article>
-                </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child box is-flex is-justify-content-center">
-                        <circular-progress></circular-progress>
+                        <line-chart></line-chart>
                     </article>
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <div class="block">
-                            <p>{{location.village}} {{location.state}}</p>
+                        <div class="level mb-3">
+                            <div class="level-left">
+                                <p class="is-size-7 has-text-weight-semibold">Total progress in project</p>
+                            </div>
+                            <div class="level-right">
+                                <button class="button is-ghost is-small">View all</button>
+                            </div>
                         </div>
-                        <div class="block">
-                            <p>{{location.weather}}º {{location.w_desc | titlecase}}</p>
+                        <div class="is-flex is-justify-content-center">
+                            <circular-progress [valuePct]="40"></circular-progress>
+
                         </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <ng-container *ngIf="location.disp; else weatherLoading">
+                            <div class="block">
+                                <p>{{location.village}}, {{location.state}}</p>
+                            </div>
+                            <div class="block">
+                                <p>{{location.weather}}º {{location.w_desc | titlecase}}</p>
+                            </div>
+                        </ng-container>
+                        <ng-template #weatherLoading>
+                            <div class="has-text-centered">
+                                <p>Location not available</p>
+                                <!-- <svg height="200" width="200">
+                                    <polygon points="50,0 0,50 50,100 0,150 50,200 100,150 150,200 200,150 150,100 200,50 150,0 100,50" fill="none" stroke="#000" stroke-width="1" />
+                                </svg> -->
+                            </div>
+                        </ng-template>
                     </article>
                 </div>
             </div>

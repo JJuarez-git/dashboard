@@ -3,10 +3,11 @@ import { openClose } from '../../../animations/animation';
 import { GeolocationService } from '../../../services/geolocation.service';
 
 export interface Location {
-  village: string,
-  state: string,
-  weather: string,
-  w_desc: string
+  village?: string,
+  state?: string,
+  weather?: string,
+  w_desc?: string,
+  disp?: boolean 
 }
 
 @Component({
@@ -17,12 +18,7 @@ export interface Location {
 })
 export class DashboardComponent implements OnInit {
 
-  location: Location = {
-    village: '',
-    state: '',
-    weather: '',
-    w_desc: ''
-  };
+  location: Location = {};
 
   constructor(private geoApi: GeolocationService) { }
 
@@ -33,10 +29,11 @@ export class DashboardComponent implements OnInit {
           let latitude = position.coords.latitude;
           let longitude = position.coords.longitude;
   
-          //this.getLocationName(latitude, longitude);
-          //this.getLocationWeather(latitude, longitude);
-        });
-      }
+          this.getLocationName(latitude, longitude);
+          this.getLocationWeather(latitude, longitude);
+          this.location.disp = true;
+        }, () => this.location.disp = false); 
+      } 
     
   }
 
@@ -44,10 +41,8 @@ export class DashboardComponent implements OnInit {
     this.geoApi.getLocation(latitude, longitude).subscribe(
       res => {
         console.log(res);
-        this.location.village = res.village + ',';
+        this.location.village = res.village || res.city;
         this.location.state = res.state;
-        //localStorage.setItem('village', res.village + ',');
-        //localStorage.setItem('state', res.state);
       },
       err => console.error(err)
     );
@@ -60,8 +55,6 @@ export class DashboardComponent implements OnInit {
         let weather = Math.floor(res['main'].temp - 273.15);
         this.location.weather = weather.toString();
         this.location.w_desc = res['weather'][0].description;
-        //localStorage.setItem('weather', weather.toString());
-        //localStorage.setItem('w_desc', res['weather'][0].description);
       },
       err => console.error(err)
     );

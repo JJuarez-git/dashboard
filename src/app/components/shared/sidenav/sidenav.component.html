@@ -4,7 +4,7 @@
     </p>
     <ul class="menu-list">
         <li><a routerLinkActive="is-active" [routerLink]="['/dashboard']" (click)="clickLink()">Dashboard</a></li>
-        <li><a routerLinkActive="is-active" [routerLink]="['/customers']" (click)="clickLink()">Customers</a></li>
+        <li><a>Projects</a></li>
     </ul>
     <p class="menu-label">
         Administration
@@ -12,6 +12,7 @@
     <ul class="menu-list">
         <li><a>Team</a></li>
         <li><a>Tasks</a></li>
+        <li><a routerLinkActive="is-active" [routerLink]="['/customers']" (click)="clickLink()">Customers</a></li>
         <li><a>File Management</a></li>
         <li><a>Authentication</a></li>
     </ul>
