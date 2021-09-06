@@ -7,7 +7,8 @@ export interface Location {
   state?: string,
   weather?: string,
   w_desc?: string,
-  disp?: boolean 
+  disp?: boolean,
+  icon?: string
 }
 
 @Component({
@@ -52,9 +53,10 @@ export class DashboardComponent implements OnInit {
     this.geoApi.getLocationWeather(latitude, longitude).subscribe(
       res => {
         console.log(res);
-        let weather = Math.floor(res['main'].temp - 273.15);
+        let weather = Math.floor(res['main'].temp);
         this.location.weather = weather.toString();
         this.location.w_desc = res['weather'][0].description;
+        this.location.icon = res['weather'][0].icon;
       },
       err => console.error(err)
     );

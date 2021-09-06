@@ -7,7 +7,18 @@
 
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <line-chart></line-chart>
+                        <!-- <line-chart></line-chart> -->
+                        <div class="level mb-3">
+                            <div class="level-left">
+                                <p class="is-size-7 has-text-weight-semibold">Total progress in project</p>
+                            </div>
+                            <div class="level-right">
+                                <button class="button is-ghost is-small">View all</button>
+                            </div>
+                        </div>
+                        <div class="has-text-centered">
+                            <!-- <circular-progress [valuePct]="23"></circular-progress> -->
+                        </div>
                     </article>
                 </div>
                 <div class="tile is-parent">
@@ -20,20 +31,23 @@
                                 <button class="button is-ghost is-small">View all</button>
                             </div>
                         </div>
-                        <div class="is-flex is-justify-content-center">
-                            <circular-progress [valuePct]="40"></circular-progress>
-
+                        <div class="has-text-centered">
+                            <!-- <circular-progress [valuePct]="64"></circular-progress> -->
                         </div>
                     </article>
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <ng-container *ngIf="location.disp; else weatherLoading">
-                            <div class="block">
-                                <p>{{location.village}}, {{location.state}}</p>
+                            <div class="block mb-0">
+                                <p class="has-text-weight-semibold is-size-5">{{location.village}}, {{location.state}}</p>
+                            </div>
+                            <div class="block is-flex is-align-items-center mb-0" style="gap: 4rem;">
+                                <p class="is-size-1 has-text-weight-medium">{{location.weather}}º</p>
+                                <img src="http://openweathermap.org/img/wn/{{location.icon}}@2x.png" alt="icon">
                             </div>
                             <div class="block">
-                                <p>{{location.weather}}º {{location.w_desc | titlecase}}</p>
+                                <p>{{location.w_desc | titlecase}}</p>
                             </div>
                         </ng-container>
                         <ng-template #weatherLoading>

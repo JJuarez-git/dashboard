@@ -24,6 +24,6 @@ export class GeolocationService {
   }
 
   getLocationWeather(latitude: number, longitude: number) {
-    return this.http.get(`${this.WEATHER_API_URL}lat=${latitude}&lon=${longitude}&appid=${this.WEATHER_API_KEY}`);
+    return this.http.get(`${this.WEATHER_API_URL}lat=${latitude}&lon=${longitude}&units=metric&appid=${this.WEATHER_API_KEY}`);
   }
 }

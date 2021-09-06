@@ -36,6 +36,7 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
                     <td mat-cell *matCellDef="let customer; let odd = odd; let even = even">
                         <div class="is-flex is-align-items-center">
+                            <!-- SRCSET EN LOS AVATARES PARA PONER IMAGEN PRECARGA -->
                             <img src="https://source.boringavatars.com/beam/40/{{customer.name}}?colors=00d1b2,09a6a3,9dbfaf,edebc9,fcf9d8" alt="icon" [ngClass]="{'icon-name-odd': odd, 'icon-name-even': even}">
                             <p class="pl-3 has-text-weight-medium">{{customer.name}}</p>
                         </div>
